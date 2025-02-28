@@ -1,0 +1,11 @@
+{
+    "devices": {
+      "light1": {
+        "status": "OFF"
+      },
+      "temperature": {
+        "value": 25
+      }
+    }
+  }
+  
