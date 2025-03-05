@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/core/utils/color.dart';
 import 'package:smart_home/features/home/presentation/view/temperature.dart';
 
 class HomeView extends StatefulWidget {
@@ -12,7 +13,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade50,
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.only(top: 18, left: 24, right: 24),
@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
                     'HI JOHN',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.indigo,
+                      color: IColors.kSeconderyColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
                     quarterTurns: 135,
                     child: Icon(
                       Icons.bar_chart_rounded,
-                      color: Colors.indigo,
+                      color: IColors.kSeconderyColor,
                       size: 28,
                     ),
                   ),
@@ -89,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
                           },
                           icon: 'assets/images/temperature.png',
                           title: 'TEMPERATURE',
-                          color: Colors.indigoAccent,
+                          color: IColors.kSeconderyColor,
                           fontColor: Colors.white,
                         ),
                       ],

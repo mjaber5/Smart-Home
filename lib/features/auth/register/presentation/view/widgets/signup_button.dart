@@ -33,7 +33,7 @@ class SignupButton extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                GoRouter.of(context).pushReplacement(AppRouter.kLayout);
+                GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
               },
               child: const Text('Sign up'),
             ),

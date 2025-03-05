@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:smart_home/core/utils/color.dart';
 
 class TemperaturePage extends StatefulWidget {
-  const TemperaturePage({Key? key}) : super(key: key);
+  const TemperaturePage({super.key});
 
   @override
-  _TemperaturePageState createState() => _TemperaturePageState();
+  State<TemperaturePage> createState() => _TemperaturePageState();
 }
 
 class _TemperaturePageState extends State<TemperaturePage> {
@@ -17,7 +16,6 @@ class _TemperaturePageState extends State<TemperaturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade50,
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.only(top: 18, left: 24, right: 24),
@@ -34,17 +32,17 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     },
                     child: const Icon(
                       Icons.arrow_back_ios,
-                      color: Colors.indigo,
+                      color: IColors.kSeconderyColor,
                     ),
                   ),
                   const RotatedBox(
                     quarterTurns: 135,
                     child: Icon(
                       Icons.bar_chart_rounded,
-                      color: Colors.indigo,
+                      color: IColors.kSeconderyColor,
                       size: 28,
                     ),
-                  )
+                  ),
                 ],
               ),
               Expanded(
@@ -56,7 +54,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                       radius: 180,
                       lineWidth: 14,
                       percent: 0.75,
-                      progressColor: Colors.indigo,
+                      progressColor: IColors.kSeconderyColor,
                       center: const Text(
                         '26\u00B0',
                         style: TextStyle(
@@ -70,7 +68,9 @@ class _TemperaturePageState extends State<TemperaturePage> {
                       child: Text(
                         'TEMPERATURE',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black54),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -95,9 +95,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             padding: EdgeInsets.symmetric(horizontal: 24),
                             child: Text(
                               'HEATING',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           Slider(
@@ -117,7 +115,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                                 Text('30\u00B0'),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -135,9 +133,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             padding: EdgeInsets.symmetric(horizontal: 24),
                             child: Text(
                               'FAN SPEED',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           Slider(
@@ -157,7 +153,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                                 Text('HIGH'),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -181,16 +177,13 @@ class _TemperaturePageState extends State<TemperaturePage> {
     );
   }
 
-  Widget _fan({
-    required String title,
-    bool isActive = false,
-  }) {
+  Widget _fan({required String title, bool isActive = false}) {
     return Column(
       children: [
         Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: isActive ? Colors.indigo : Colors.white,
+            color: isActive ? IColors.kSeconderyColor : Colors.white,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Image.asset(
@@ -200,33 +193,23 @@ class _TemperaturePageState extends State<TemperaturePage> {
         const SizedBox(height: 12),
         Text(
           title,
-          style: TextStyle(
-            color: isActive ? Colors.black87 : Colors.black54,
-          ),
+          style: TextStyle(color: isActive ? Colors.black87 : Colors.black54),
         ),
       ],
     );
   }
 
-  Widget _roundedButton({
-    required String title,
-    bool isActive = false,
-  }) {
+  Widget _roundedButton({required String title, bool isActive = false}) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 12,
-        horizontal: 32,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
       decoration: BoxDecoration(
-        color: isActive ? Colors.indigo : Colors.transparent,
+        color: isActive ? IColors.kSeconderyColor : Colors.transparent,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.indigo),
+        border: Border.all(color: IColors.kSeconderyColor),
       ),
       child: Text(
         title,
-        style: TextStyle(
-          color: isActive ? Colors.white : Colors.black,
-        ),
+        style: TextStyle(color: isActive ? Colors.white : Colors.black),
       ),
     );
   }
