@@ -15,7 +15,7 @@ class SplashAppLogo extends StatelessWidget {
             'assets/icons/smart-house.png',
             height: 150,
             width: 150,
-            color: IColors.kPrimaryColor,
+            color: IColors.kFourthColor,
           ),
           Center(
             child: Row(
@@ -26,7 +26,7 @@ class SplashAppLogo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    color: IColors.kPrimaryColor,
+                    color: IColors.kFourthColor,
                   ),
                 ),
                 Text(

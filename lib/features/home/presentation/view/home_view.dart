@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:smart_home/core/utils/app_router.dart';
 import 'package:smart_home/core/utils/color.dart';
 import 'package:smart_home/features/home/presentation/view/temperature.dart';
 import 'package:smart_home/features/home/presentation/view/widgets/custom_drawer.dart';
@@ -77,6 +79,9 @@ class _HomeViewState extends State<HomeView> {
                         _cardMenu(
                           icon: 'assets/images/energy.png',
                           title: 'ENERGY',
+                          onTap: () {
+                            GoRouter.of(context).push(AppRouter.kEnergyView);
+                          },
                         ),
                         _cardMenu(
                           onTap: () {
@@ -129,7 +134,7 @@ class _HomeViewState extends State<HomeView> {
         padding: const EdgeInsets.symmetric(vertical: 36),
         width: 156,
         decoration: BoxDecoration(
-          color: IColors.kSeconderyColor.withAlpha(30),
+          color: IColors.kSeconderyColor.withAlpha(50),
           borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
@@ -156,7 +161,7 @@ class WeatherContainer extends StatelessWidget {
       width: 400,
       height: 200,
       decoration: BoxDecoration(
-        color: IColors.kSeconderyColor.withAlpha(30),
+        color: IColors.kSeconderyColor.withAlpha(50),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(

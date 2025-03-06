@@ -174,7 +174,10 @@ class _TemperaturePageState extends State<TemperaturePage> {
         Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: isActive ? IColors.kSeconderyColor : Colors.transparent,
+            color:
+                isActive
+                    ? IColors.kSeconderyColor.withAlpha(40)
+                    : Colors.transparent,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Image.asset(
@@ -206,7 +209,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
       child: Text(
         title,
         style: TextStyle(
-          color: isActive ? Colors.white : IColors.kPrimaryColor,
+          color: isActive ? Colors.white : IColors.kSeconderyColor,
         ),
       ),
     );
