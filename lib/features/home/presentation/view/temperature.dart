@@ -24,7 +24,6 @@ class _TemperaturePageState extends State<TemperaturePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -33,6 +32,14 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     child: const Icon(
                       Icons.arrow_back_ios,
                       color: IColors.kSeconderyColor,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Temperature',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],

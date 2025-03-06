@@ -7,32 +7,56 @@ class EnergyViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Energy Dashboard"), centerTitle: true),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildTotalEnergyCard(),
-              const SizedBox(height: 20),
-              const Text(
-                "Power Consumption (kWh)",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              _buildEnergyChart(),
-              const SizedBox(height: 20),
-              const Text(
-                "Smart Devices",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              _buildSmartDevicesGrid(),
-            ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: IColors.kSeconderyColor,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      'Energy Consumption',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                _buildTotalEnergyCard(),
+                const SizedBox(height: 20),
+                const Text(
+                  "Power Consumption (kWh)",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                _buildEnergyChart(),
+                const SizedBox(height: 20),
+                const Text(
+                  "Smart Devices",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                _buildSmartDevicesGrid(),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

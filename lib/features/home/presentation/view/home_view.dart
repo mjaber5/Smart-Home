@@ -106,6 +106,11 @@ class _HomeViewState extends State<HomeView> {
                           title: 'WATER',
                         ),
                         _cardMenu(
+                          onTap: () {
+                            GoRouter.of(
+                              context,
+                            ).push(AppRouter.kEntertainmentView);
+                          },
                           icon: 'assets/images/entertainment.png',
                           title: 'ENTERTAINMENT',
                         ),

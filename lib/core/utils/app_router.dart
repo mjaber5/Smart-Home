@@ -1,8 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:smart_home/features/auth/register/presentation/view/signup_view.dart';
 import 'package:smart_home/features/auth/signin/presentation/view/login_view.dart';
+import 'package:smart_home/features/home/presentation/view/energy_view.dart';
+import 'package:smart_home/features/home/presentation/view/entertainment_view.dart';
 import 'package:smart_home/features/home/presentation/view/home_view.dart';
-import 'package:smart_home/features/home/presentation/view/widgets/energy_view_body.dart';
 import 'package:smart_home/features/splash/presentation/view/splash_view.dart';
 
 abstract class AppRouter {
@@ -15,6 +16,7 @@ abstract class AppRouter {
   static const kNotificationView = '/notificationView';
   static const kProfileView = '/profileView';
   static const kEnergyView = '/energyView';
+  static const kEntertainmentView = '/entertainmentView';
 
   static final router = GoRouter(
     routes: [
@@ -30,7 +32,11 @@ abstract class AppRouter {
       GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
       GoRoute(
         path: kEnergyView,
-        builder: (context, state) => const EnergyViewBody(),
+        builder: (context, state) => const EnergyView(),
+      ),
+      GoRoute(
+        path: kEntertainmentView,
+        builder: (context, state) => const EntertainmentView(),
       ),
     ],
   );
