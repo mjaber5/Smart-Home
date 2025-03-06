@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:smart_home/core/utils/color.dart';
 
@@ -13,6 +12,7 @@ class TemperaturePage extends StatefulWidget {
 class _TemperaturePageState extends State<TemperaturePage> {
   double heating = 12;
   double fan = 15;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,27 +20,21 @@ class _TemperaturePageState extends State<TemperaturePage> {
         child: Container(
           margin: const EdgeInsets.only(top: 18, left: 24, right: 24),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                    onTap: () => Navigator.pop(context),
                     child: const Icon(
                       Icons.arrow_back_ios,
                       color: IColors.kSeconderyColor,
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Text(
-                    'Temperature',
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const Text(
+                    'Temperature Control',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -53,11 +47,11 @@ class _TemperaturePageState extends State<TemperaturePage> {
                       radius: 180,
                       lineWidth: 14,
                       percent: 0.75,
-                      progressColor: IColors.kSeconderyColor,
-                      center: const Text(
-                        '26\u00B0',
+                      progressColor: IColors.kFourthColor.withAlpha(215),
+                      center: Text(
+                        '${heating.toInt()}°',
                         style: TextStyle(
-                          fontSize: 32,
+                          fontSize: 40,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -66,7 +60,10 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     const Center(
                       child: Text(
                         'TEMPERATURE',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -78,82 +75,16 @@ class _TemperaturePageState extends State<TemperaturePage> {
                       ],
                     ),
                     const SizedBox(height: 32),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                      decoration: BoxDecoration(
-                        color: IColors.kSeconderyColor.withAlpha(30),
-
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
-                            child: Text(
-                              'HEATING',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Slider(
-                            value: heating,
-                            onChanged: (newHeating) {
-                              setState(() => heating = newHeating);
-                            },
-                            max: 30,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('0\u00B0'),
-                                Text('15\u00B0'),
-                                Text('30\u00B0'),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    _temperatureSlider(
+                      'HEATING',
+                      heating,
+                      (value) => setState(() => heating = value),
                     ),
                     const SizedBox(height: 24),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                      decoration: BoxDecoration(
-                        color: IColors.kSeconderyColor.withAlpha(30),
-
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
-                            child: Text(
-                              'FAN SPEED',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Slider(
-                            value: fan,
-                            onChanged: (newFan) {
-                              setState(() => fan = newFan);
-                            },
-                            max: 30,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('LOW'),
-                                Text('MID'),
-                                Text('HIGH'),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    _temperatureSlider(
+                      'FAN SPEED',
+                      fan,
+                      (value) => setState(() => fan = value),
                     ),
                     const SizedBox(height: 24),
                     Row(
@@ -175,6 +106,45 @@ class _TemperaturePageState extends State<TemperaturePage> {
     );
   }
 
+  Widget _temperatureSlider(
+    String title,
+    double value,
+    Function(double) onChanged,
+  ) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 18),
+      decoration: BoxDecoration(
+        color: IColors.kSeconderyColor.withAlpha(30),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          Slider(
+            value: value,
+            onChanged: onChanged,
+            max: 30,
+            activeColor: IColors.kPrimaryColor,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [Text('LOW'), Text('MID'), Text('HIGH')],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _fan({required String title, bool isActive = false}) {
     return Column(
       children: [
@@ -189,16 +159,19 @@ class _TemperaturePageState extends State<TemperaturePage> {
           ),
           child: Image.asset(
             isActive ? 'assets/images/fan-2.png' : 'assets/images/fan-1.png',
+            width: 60,
           ),
         ),
         const SizedBox(height: 12),
         Text(
           title,
           style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
             color:
                 isActive
-                    ? IColors.kPrimaryColor
-                    : IColors.kPrimaryColor.withAlpha(150),
+                    ? IColors.kFourthColor
+                    : IColors.kSeconderyColor.withAlpha(150),
           ),
         ),
       ],
@@ -209,14 +182,19 @@ class _TemperaturePageState extends State<TemperaturePage> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
       decoration: BoxDecoration(
-        color: isActive ? IColors.kSeconderyColor : Colors.transparent,
+        color:
+            isActive
+                ? IColors.kSeconderyColor.withAlpha(80)
+                : Colors.transparent,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: IColors.kSeconderyColor),
+        border: Border.all(color: Colors.transparent),
       ),
       child: Text(
         title,
         style: TextStyle(
-          color: isActive ? Colors.white : IColors.kSeconderyColor,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: isActive ? Colors.white : IColors.kFourthColor,
         ),
       ),
     );

@@ -77,7 +77,7 @@ class _HomeViewState extends State<HomeView> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         _cardMenu(
-                          icon: 'assets/images/energy.png',
+                          icon: 'assets/icons/7.png',
                           title: 'ENERGY',
                           onTap: () {
                             GoRouter.of(context).push(AppRouter.kEnergyView);
@@ -92,7 +92,7 @@ class _HomeViewState extends State<HomeView> {
                               ),
                             );
                           },
-                          icon: 'assets/images/temperature.png',
+                          icon: 'assets/icons/8.png',
                           title: 'TEMPERATURE',
                         ),
                       ],
@@ -101,17 +101,14 @@ class _HomeViewState extends State<HomeView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _cardMenu(
-                          icon: 'assets/images/water.png',
-                          title: 'WATER',
-                        ),
+                        _cardMenu(icon: 'assets/icons/9.png', title: 'WATER'),
                         _cardMenu(
                           onTap: () {
                             GoRouter.of(
                               context,
                             ).push(AppRouter.kEntertainmentView);
                           },
-                          icon: 'assets/images/entertainment.png',
+                          icon: 'assets/icons/10.png',
                           title: 'ENTERTAINMENT',
                         ),
                       ],
@@ -173,18 +170,18 @@ class WeatherContainer extends StatelessWidget {
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [CloudAnimation(), SizedBox(height: 10)],
+            children: [CloudAnimation()],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '3°C',
+                '13°C',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               Text(
-                'Snowy',
+                'Sunny',
                 style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
               ),
             ],
@@ -241,7 +238,7 @@ class _CloudAnimationState extends State<CloudAnimation>
               child: child,
             );
           },
-          child: Image.asset('assets/images/weather/0.png', width: 230),
+          child: Image.asset('assets/icons/3.png', width: 190),
         ),
       ],
     );
