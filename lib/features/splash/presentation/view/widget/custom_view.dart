@@ -89,7 +89,7 @@ class _CustomViewState extends State<CustomView>
           width: MediaQuery.of(context).size.width / sizeFactor,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: IColors.kFourthColor.withOpacity(0.7),
+            color: IColors.kFourthColor,
           ),
         ),
       ),

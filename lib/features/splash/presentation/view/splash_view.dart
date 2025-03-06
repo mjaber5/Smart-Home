@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_home/core/utils/color.dart';
 import 'package:smart_home/features/splash/presentation/view/widget/splash_view_body.dart';
 
 class SplashView extends StatelessWidget {
@@ -8,9 +7,6 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: IColors.kPrimaryColor,
-      body: SplashViewBody(),
-    );
+    return const Scaffold(body: SplashViewBody());
   }
 }

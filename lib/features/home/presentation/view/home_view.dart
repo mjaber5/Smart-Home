@@ -101,7 +101,14 @@ class _HomeViewState extends State<HomeView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _cardMenu(icon: 'assets/icons/9.png', title: 'WATER'),
+                        _cardMenu(
+                          icon: 'assets/icons/9.png',
+                          title: 'WATER',
+                          onTap:
+                              () => GoRouter.of(
+                                context,
+                              ).push(AppRouter.kWaterView),
+                        ),
                         _cardMenu(
                           onTap: () {
                             GoRouter.of(

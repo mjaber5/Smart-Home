@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/core/utils/color.dart';
 
-class SplashAppLogo extends StatefulWidget {
-  const SplashAppLogo({super.key});
+class WaterViewBody extends StatefulWidget {
+  const WaterViewBody({super.key});
 
   @override
-  State<SplashAppLogo> createState() => _SplashAppLogoState();
+  State<WaterViewBody> createState() => _WaterViewBodyState();
 }
 
-class _SplashAppLogoState extends State<SplashAppLogo>
+class _WaterViewBodyState extends State<WaterViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _imageSlideAnimation;
@@ -47,32 +46,20 @@ class _SplashAppLogoState extends State<SplashAppLogo>
     return SafeArea(
       child: Column(
         children: [
+          SizedBox(height: 200),
           // Animated image with slide-in effect
           Center(
             child: SlideTransition(
               position: _imageSlideAnimation,
-              child: Image.asset('assets/icons/1.png', width: 300),
+              child: Image.asset('assets/icons/1.png', width: 400),
             ),
           ),
           // Animated text with slide-in effect
           SlideTransition(
             position: _textSlideAnimation,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'D',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: IColors.kFourthColor,
-                  ),
-                ),
-                Text(
-                  'igital Home',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: Text(
+              'Digital Home',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
         ],
