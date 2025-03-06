@@ -14,15 +14,22 @@ class LoginLogoView extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text(
-                'NH',
+              Text(
+                'D',
                 style: TextStyle(
                   fontSize: 40,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.bold,
                   color: IColors.kSeconderyColor,
                 ),
               ),
-              Icon(Icons.home, size: 50, color: IColors.kSeconderyColor),
+              Text(
+                'igital Home',
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
 

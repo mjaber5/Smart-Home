@@ -17,7 +17,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      // ignore: use_build_context_synchronously
       GoRouter.of(context).pushReplacement(AppRouter.kSigninView);
     });
   }

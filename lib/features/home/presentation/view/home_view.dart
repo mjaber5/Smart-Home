@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/core/utils/color.dart';
 import 'package:smart_home/features/home/presentation/view/temperature.dart';
+import 'package:smart_home/features/home/presentation/view/widgets/custom_drawer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -13,6 +14,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(context: context), // ✅ Added drawer
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.only(top: 18, left: 24, right: 24),
@@ -22,22 +24,33 @@ class _HomeViewState extends State<HomeView> {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
-                    'HI JOHN',
+                    'HI Mohammed',
                     style: TextStyle(
                       fontSize: 18,
                       color: IColors.kSeconderyColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  RotatedBox(
-                    quarterTurns: 135,
-                    child: Icon(
-                      Icons.bar_chart_rounded,
-                      color: IColors.kSeconderyColor,
-                      size: 28,
-                    ),
+                  Builder(
+                    builder: (context) {
+                      return InkWell(
+                        onTap: () {
+                          Scaffold.of(
+                            context,
+                          ).openDrawer(); // ✅ This will now work
+                        },
+                        child: RotatedBox(
+                          quarterTurns: 135,
+                          child: Icon(
+                            Icons.bar_chart_rounded,
+                            color: IColors.kSeconderyColor,
+                            size: 28,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -46,22 +59,9 @@ class _HomeViewState extends State<HomeView> {
                   physics: const BouncingScrollPhysics(),
                   children: [
                     const SizedBox(height: 32),
-                    Center(
-                      child: Image.asset(
-                        'assets/images/banner.png',
-                        scale: 1.2,
-                      ),
-                    ),
+                    Center(child: WeatherContainer()),
                     const SizedBox(height: 16),
-                    const Center(
-                      child: Text(
-                        'Smart Home',
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+
                     const SizedBox(height: 48),
                     const Text(
                       'SERVICES',
@@ -144,6 +144,28 @@ class _HomeViewState extends State<HomeView> {
               style: TextStyle(fontWeight: FontWeight.bold, color: fontColor),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class WeatherContainer extends StatelessWidget {
+  const WeatherContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 400,
+      height: 200,
+      decoration: BoxDecoration(
+        color: IColors.kPrimaryColor,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: const Center(
+        child: Text(
+          'Weather Container',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
     );
