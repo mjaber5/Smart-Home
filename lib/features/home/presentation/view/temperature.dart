@@ -46,7 +46,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     CircularPercentIndicator(
                       radius: 180,
                       lineWidth: 14,
-                      percent: 0.75,
+                      percent: heating / 30,
                       progressColor: IColors.kFourthColor.withAlpha(215),
                       center: Text(
                         '${heating.toInt()}°',
