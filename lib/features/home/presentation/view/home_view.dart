@@ -29,7 +29,7 @@ class _HomeViewState extends State<HomeView> {
                     'HI Mohammed',
                     style: TextStyle(
                       fontSize: 18,
-                      color: IColors.kSeconderyColor,
+                      color: IColors.kFourthColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
                           quarterTurns: 135,
                           child: Icon(
                             Icons.bar_chart_rounded,
-                            color: IColors.kSeconderyColor,
+                            color: IColors.kFourthColor,
                             size: 28,
                           ),
                         ),
@@ -89,8 +89,6 @@ class _HomeViewState extends State<HomeView> {
                           },
                           icon: 'assets/images/temperature.png',
                           title: 'TEMPERATURE',
-                          color: IColors.kSeconderyColor,
-                          fontColor: Colors.white,
                         ),
                       ],
                     ),
@@ -123,7 +121,6 @@ class _HomeViewState extends State<HomeView> {
     required String title,
     required String icon,
     VoidCallback? onTap,
-    Color color = Colors.white,
     Color fontColor = Colors.grey,
   }) {
     return GestureDetector(
@@ -132,7 +129,7 @@ class _HomeViewState extends State<HomeView> {
         padding: const EdgeInsets.symmetric(vertical: 36),
         width: 156,
         decoration: BoxDecoration(
-          color: color,
+          color: IColors.kSeconderyColor.withAlpha(30),
           borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
@@ -159,15 +156,84 @@ class WeatherContainer extends StatelessWidget {
       width: 400,
       height: 200,
       decoration: BoxDecoration(
-        color: IColors.kPrimaryColor,
+        color: IColors.kSeconderyColor.withAlpha(30),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const Center(
-        child: Text(
-          'Weather Container',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
+      child: Row(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [CloudAnimation(), SizedBox(height: 10)],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '3°C',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Snowy',
+                style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
+              ),
+            ],
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class CloudAnimation extends StatefulWidget {
+  const CloudAnimation({super.key});
+
+  @override
+  State<CloudAnimation> createState() => _CloudAnimationState();
+}
+
+class _CloudAnimationState extends State<CloudAnimation>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _cloudAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 4),
+    )..repeat(reverse: true);
+
+    _cloudAnimation = Tween<double>(
+      begin: -5,
+      end: 20,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedBuilder(
+          animation: _cloudAnimation,
+          builder: (context, child) {
+            return Transform.translate(
+              offset: Offset(0, _cloudAnimation.value),
+              child: child,
+            );
+          },
+          child: Image.asset('assets/images/weather/0.png', width: 230),
+        ),
+      ],
     );
   }
 }

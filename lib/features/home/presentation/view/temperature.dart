@@ -35,14 +35,6 @@ class _TemperaturePageState extends State<TemperaturePage> {
                       color: IColors.kSeconderyColor,
                     ),
                   ),
-                  const RotatedBox(
-                    quarterTurns: 135,
-                    child: Icon(
-                      Icons.bar_chart_rounded,
-                      color: IColors.kSeconderyColor,
-                      size: 28,
-                    ),
-                  ),
                 ],
               ),
               Expanded(
@@ -67,10 +59,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     const Center(
                       child: Text(
                         'TEMPERATURE',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -85,7 +74,8 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     Container(
                       padding: const EdgeInsets.symmetric(vertical: 18),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: IColors.kSeconderyColor.withAlpha(30),
+
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Column(
@@ -123,7 +113,8 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     Container(
                       padding: const EdgeInsets.symmetric(vertical: 18),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: IColors.kSeconderyColor.withAlpha(30),
+
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Column(
@@ -183,7 +174,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
         Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: isActive ? IColors.kSeconderyColor : Colors.white,
+            color: isActive ? IColors.kSeconderyColor : Colors.transparent,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Image.asset(
@@ -193,7 +184,12 @@ class _TemperaturePageState extends State<TemperaturePage> {
         const SizedBox(height: 12),
         Text(
           title,
-          style: TextStyle(color: isActive ? Colors.black87 : Colors.black54),
+          style: TextStyle(
+            color:
+                isActive
+                    ? IColors.kPrimaryColor
+                    : IColors.kPrimaryColor.withAlpha(150),
+          ),
         ),
       ],
     );
@@ -209,7 +205,9 @@ class _TemperaturePageState extends State<TemperaturePage> {
       ),
       child: Text(
         title,
-        style: TextStyle(color: isActive ? Colors.white : Colors.black),
+        style: TextStyle(
+          color: isActive ? Colors.white : IColors.kPrimaryColor,
+        ),
       ),
     );
   }

@@ -26,7 +26,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return const Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [CustomView(), SplashAppLogo()],
+        children: [CustomView(), Expanded(child: SplashAppLogo())],
       ),
     );
   }

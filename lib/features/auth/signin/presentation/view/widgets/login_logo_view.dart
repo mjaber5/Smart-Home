@@ -24,11 +24,7 @@ class LoginLogoView extends StatelessWidget {
               ),
               Text(
                 'igital Home',
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
             ],
           ),

@@ -87,9 +87,9 @@ class _CustomViewState extends State<CustomView>
         child: Container(
           height: MediaQuery.of(context).size.width / sizeFactor,
           width: MediaQuery.of(context).size.width / sizeFactor,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: IColors.kSeconderyColor,
+            color: IColors.kFourthColor.withOpacity(0.7),
           ),
         ),
       ),
