@@ -17,51 +17,13 @@ class SignupTextFormFeild extends StatelessWidget {
                 color: Colors.grey[700],
               ),
               hintText: 'Name',
-              hintStyle: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[500],
-              ),
+              hintStyle: TextStyle(fontSize: 14, color: Colors.grey[500]),
               focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.3),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Image.asset(
-                'assets/icons/id-card.png',
-                scale: 18,
-                color: Colors.grey[700],
-              ),
-              hintText: 'ID-Number',
-              hintStyle: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[500],
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.3),
                 borderRadius: BorderRadius.circular(16.0),
               ),
             ),
@@ -75,56 +37,19 @@ class SignupTextFormFeild extends StatelessWidget {
                 color: Colors.grey[700],
               ),
               hintText: 'E-Mail',
-              hintStyle: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[500],
-              ),
+              hintStyle: TextStyle(fontSize: 14, color: Colors.grey[500]),
               focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.3),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.3),
                 borderRadius: BorderRadius.circular(16.0),
               ),
             ),
           ),
           const SizedBox(height: 20),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Image.asset(
-                'assets/icons/telephone.png',
-                scale: 22,
-                color: Colors.grey[700],
-              ),
-              hintText: 'Phone Number',
-              hintStyle: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[500],
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
+
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: Image.asset(
@@ -133,22 +58,13 @@ class SignupTextFormFeild extends StatelessWidget {
                 color: Colors.grey[700],
               ),
               hintText: 'Password',
-              hintStyle: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[500],
-              ),
+              hintStyle: TextStyle(fontSize: 14, color: Colors.grey[500]),
               focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.3),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.grey,
-                  width: 1.3,
-                ),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.3),
                 borderRadius: BorderRadius.circular(16.0),
               ),
             ),

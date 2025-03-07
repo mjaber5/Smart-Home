@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/core/utils/color.dart';
 
-class EntertainmentViewBody extends StatelessWidget {
+class EntertainmentViewBody extends StatefulWidget {
   const EntertainmentViewBody({super.key});
+
+  @override
+  State<EntertainmentViewBody> createState() => _EntertainmentViewBodyState();
+}
+
+class _EntertainmentViewBodyState extends State<EntertainmentViewBody> {
+  // Store the device states
+  final Map<String, bool> deviceStates = {
+    "Living Room TV": true,
+    "Sound System": false,
+    "Smart Lights": true,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +26,7 @@ class EntertainmentViewBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     GestureDetector(
@@ -27,18 +39,18 @@ class EntertainmentViewBody extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    Text(
+                    const Text(
                       'Entertainment',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
-                Text(
-                  'Play movies : ',
+                const SizedBox(height: 20),
+                const Text(
+                  'Play movies:',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
@@ -55,11 +67,11 @@ class EntertainmentViewBody extends StatelessWidget {
     );
   }
 
-  // Featured Media with smooth animation
+  // Featured Media Section
   Widget _buildFeaturedMedia() {
     return GestureDetector(
       onTap: () {
-        // Handle the tap action for a featured movie/show
+        // Handle tap
       },
       child: AnimatedContainer(
         duration: const Duration(seconds: 1),
@@ -67,28 +79,25 @@ class EntertainmentViewBody extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           image: const DecorationImage(
-            image: AssetImage(
-              'assets/images/movies/harry.webp',
-            ), // Example image
+            image: AssetImage('assets/images/movies/harry.webp'),
             fit: BoxFit.cover,
           ),
         ),
         height: 250,
-        child: Center(
+        child: const Center(
           child: Icon(Icons.play_arrow, color: Colors.white, size: 60),
         ),
       ),
     );
   }
 
-  // Scrollable list of movies or shows
+  // Scrollable Movie Section
   Widget _buildMoviesSection() {
     List<Map<String, String>> movies = [
       {"title": "Movie 1", "image": 'assets/images/movies/got.jpg'},
       {"title": "Movie 2", "image": 'assets/images/movies/extraction.jpg'},
       {"title": "Movie 3", "image": 'assets/images/movies/munoya.webp'},
       {"title": "Movie 4", "image": 'assets/images/movies/squid-game.jpg'},
-      // Add more movies here
     ];
 
     return Column(
@@ -109,7 +118,7 @@ class EntertainmentViewBody extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 16.0),
                 child: GestureDetector(
                   onTap: () {
-                    // Handle the tap action for movie selection
+                    // Handle movie selection
                   },
                   child: Hero(
                     tag: movies[index]['title']!,
@@ -150,29 +159,32 @@ class EntertainmentViewBody extends StatelessWidget {
     );
   }
 
-  // Media Control Cards (Smart Devices)
+  // Media Control Cards
   Widget _buildMediaControlCards() {
     return Column(
-      children: [
-        _buildMediaCard("Living Room TV", Icons.tv, true),
-        const SizedBox(height: 20),
-        _buildMediaCard("Sound System", Icons.headphones, false),
-        const SizedBox(height: 20),
-        _buildMediaCard("Smart Lights", Icons.lightbulb, true),
-      ],
+      children:
+          deviceStates.keys.map((device) {
+            return Column(
+              children: [
+                _buildMediaCard(device, deviceStates[device]!),
+                const SizedBox(height: 20),
+              ],
+            );
+          }).toList(),
     );
   }
 
-  // Control card for each smart device
-  Widget _buildMediaCard(String deviceName, IconData icon, bool isOn) {
+  // Single Smart Device Control Card
+  Widget _buildMediaCard(String deviceName, bool isOn) {
     return GestureDetector(
       onTap: () {
-        // Handle device toggle logic here
+        setState(() {
+          deviceStates[deviceName] = !deviceStates[deviceName]!;
+        });
       },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 6,
-
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -181,7 +193,7 @@ class EntertainmentViewBody extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    icon,
+                    _getDeviceIcon(deviceName),
                     color: isOn ? IColors.kFourthColor : Colors.grey,
                     size: 40,
                   ),
@@ -198,7 +210,9 @@ class EntertainmentViewBody extends StatelessWidget {
               Switch(
                 value: isOn,
                 onChanged: (value) {
-                  // Handle device toggle
+                  setState(() {
+                    deviceStates[deviceName] = value;
+                  });
                 },
                 activeColor: IColors.kFourthColor,
               ),
@@ -207,5 +221,19 @@ class EntertainmentViewBody extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Get appropriate icon for the device
+  IconData _getDeviceIcon(String deviceName) {
+    switch (deviceName) {
+      case "Living Room TV":
+        return Icons.tv;
+      case "Sound System":
+        return Icons.headphones;
+      case "Smart Lights":
+        return Icons.lightbulb;
+      default:
+        return Icons.device_unknown;
+    }
   }
 }
