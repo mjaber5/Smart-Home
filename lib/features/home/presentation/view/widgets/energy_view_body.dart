@@ -1,9 +1,40 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:smart_home/core/utils/color.dart';
 
-class EnergyViewBody extends StatelessWidget {
+class EnergyViewBody extends StatefulWidget {
   const EnergyViewBody({super.key});
+
+  @override
+  State<EnergyViewBody> createState() => _EnergyViewBodyState();
+}
+
+class _EnergyViewBodyState extends State<EnergyViewBody> {
+  final DatabaseReference _databaseRef = FirebaseDatabase.instance.ref(
+    'smart_home/energy',
+  );
+
+  Map<String, dynamic> energyData = {
+    "power_usage": {"current": 0},
+    "devices": {},
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    _listenToFirebase();
+  }
+
+  void _listenToFirebase() {
+    _databaseRef.onValue.listen((event) {
+      if (event.snapshot.value != null) {
+        setState(() {
+          energyData = Map<String, dynamic>.from(event.snapshot.value as Map);
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +93,8 @@ class EnergyViewBody extends StatelessWidget {
   }
 
   Widget _buildTotalEnergyCard() {
+    int powerUsage = energyData["power_usage"]["current"] ?? 0;
+
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 4,
@@ -79,7 +112,7 @@ class EnergyViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "245 kWh",
+                  "$powerUsage kWh",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -147,10 +180,11 @@ class EnergyViewBody extends StatelessWidget {
       itemCount: devices.length,
       itemBuilder: (context, index) {
         var device = devices[index];
+        bool status = energyData["devices"]?[device["name"]] ?? false;
         return ExpandableDeviceCard(
           name: device["name"],
           icon: device["icon"],
-          isOn: device["status"],
+          isOn: status,
         );
       },
     );
@@ -187,14 +221,21 @@ class _ExpandableDeviceCardState extends State<ExpandableDeviceCard> {
     _deviceState = widget.isOn;
   }
 
+  void _toggleDeviceState() {
+    _isExpanded = !_isExpanded; // Toggle expanded state
+
+    setState(() {
+      _deviceState = !_deviceState;
+      FirebaseDatabase.instance
+          .ref('smart_home/energy/devices/${widget.name}')
+          .set(_deviceState);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isExpanded = !_isExpanded; // Toggle expanded state
-        });
-      },
+      onTap: _toggleDeviceState,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 4,
@@ -235,10 +276,7 @@ class _ExpandableDeviceCardState extends State<ExpandableDeviceCard> {
                       value:
                           _deviceState, // Bind the switch value to the _deviceState
                       onChanged: (value) {
-                        setState(() {
-                          _deviceState =
-                              value; // Update the device state when toggled
-                        });
+                        _toggleDeviceState();
                       },
                       activeColor: IColors.kFourthColor,
                     ),

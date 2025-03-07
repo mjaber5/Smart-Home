@@ -1,11 +1,79 @@
 {
-    "devices": {
-      "light1": {
-        "status": "OFF"
-      },
-      "temperature": {
-        "value": 25
+  "smart_home": {
+    "temperature": {
+      "current": 22,
+      "target": 24,
+      "mode": "heating",
+      "unit": "Celsius"
+    },
+    "fan": {
+      "speed": 15,
+      "mode": "auto",
+      "status": "on",
+      "fans": {
+        "fan1": true,
+        "fan2": true,
+        "fan3": false
       }
+    },
+    "energy": {
+      "power_usage": {
+        "current": 3500,
+        "unit": "Watt",
+        "monthly_consumption": 120
+      },
+      "solar": {
+        "status": "active",
+        "generation": 500,
+        "unit": "Watt"
+      },
+      "devices": {
+        "lights": true,
+        "AC": true,
+        "heater": false
+      }
+    },
+    "water": {
+      "usage": {
+        "current": 150,
+        "unit": "liters",
+        "monthly_consumption": 4500
+      },
+      "tank": {
+        "capacity": 1000,
+        "current_level": 750
+      },
+      "valves": {
+        "kitchen": true,
+        "bathroom": false,
+        "garden": true
+      }
+    },
+    "entertainment": {
+      "tv": {
+        "status": "on",
+        "channel": 5,
+        "volume": 20
+      },
+      "music": {
+        "status": "playing",
+        "track": "Imagine Dragons - Believer",
+        "volume": 50
+      }
+    },
+    "security": {
+      "doors": {
+        "front_door": "locked",
+        "garage": "unlocked"
+      },
+      "cameras": {
+        "living_room": "online",
+        "backyard": "offline"
+      }
+    },
+    "system_status": {
+      "power": "on",
+      "last_updated": "2025-03-07T12:00:00Z"
     }
   }
-  
+}
