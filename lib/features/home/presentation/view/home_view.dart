@@ -4,6 +4,7 @@ import 'package:smart_home/core/utils/app_router.dart';
 import 'package:smart_home/core/utils/color.dart';
 import 'package:smart_home/features/home/presentation/view/temperature.dart';
 import 'package:smart_home/features/home/presentation/view/widgets/custom_drawer.dart';
+import 'package:smart_home/features/home/presentation/view/widgets/weather_container.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -157,97 +158,6 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class WeatherContainer extends StatelessWidget {
-  const WeatherContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      height: 200,
-      decoration: BoxDecoration(
-        color: IColors.kSeconderyColor.withAlpha(50),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [CloudAnimation()],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '13°C',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'Sunny',
-                style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CloudAnimation extends StatefulWidget {
-  const CloudAnimation({super.key});
-
-  @override
-  State<CloudAnimation> createState() => _CloudAnimationState();
-}
-
-class _CloudAnimationState extends State<CloudAnimation>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _cloudAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 4),
-    )..repeat(reverse: true);
-
-    _cloudAnimation = Tween<double>(
-      begin: -5,
-      end: 20,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AnimatedBuilder(
-          animation: _cloudAnimation,
-          builder: (context, child) {
-            return Transform.translate(
-              offset: Offset(0, _cloudAnimation.value),
-              child: child,
-            );
-          },
-          child: Image.asset('assets/icons/3.png', width: 190),
-        ),
-      ],
     );
   }
 }
