@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:smart_home/core/utils/app_router.dart';
 import 'package:smart_home/core/utils/color.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -36,7 +38,9 @@ class CustomDrawer extends StatelessWidget {
               backgroundImage: AssetImage('assets/icons/2.png'),
             ),
           ),
-          _buildDrawerItem(Icons.dashboard, 'Dashboard', () {}),
+          _buildDrawerItem(Icons.dashboard, 'Dashboard', () {
+            GoRouter.of(context).push(AppRouter.kDashboardView);
+          }),
           _buildDrawerItem(Icons.lightbulb_outline, 'Lighting', () {}),
           _buildDrawerItem(Icons.thermostat, 'Temperature', () {}),
           _buildDrawerItem(Icons.security, 'Security', () {}),
