@@ -22,6 +22,12 @@ class _WifiSettingsViewBodyState extends State<WifiSettingsViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           "WiFi Settings",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
