@@ -28,16 +28,12 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                  child: const Icon(Icons.arrow_back_ios),
                 ),
                 const SizedBox(width: 10),
                 const Text(
                   'Dashboard',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ],
             ),

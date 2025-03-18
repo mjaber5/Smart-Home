@@ -39,12 +39,18 @@ class CustomDrawer extends StatelessWidget {
           _buildDrawerItem(Icons.lightbulb_outline, 'Lighting', () {
             GoRouter.of(context).push(AppRouter.kLightingView);
           }),
-          _buildDrawerItem(Icons.thermostat, 'Temperature', () {}),
+          _buildDrawerItem(Icons.thermostat, 'Temperature', () {
+            GoRouter.of(context).push(AppRouter.kTempratureView);
+          }),
           _buildDrawerItem(Icons.security, 'Security', () {
             GoRouter.of(context).push(AppRouter.kSecurityView);
           }),
-          _buildDrawerItem(Icons.wifi, 'Wi-Fi Settings', () {}),
-          _buildDrawerItem(Icons.settings, 'Settings', () {}),
+          _buildDrawerItem(Icons.wifi, 'Wi-Fi Settings', () {
+            GoRouter.of(context).push(AppRouter.kWifiSettingsView);
+          }),
+          _buildDrawerItem(Icons.settings, 'Settings', () {
+            GoRouter.of(context).push(AppRouter.kSettingsView);
+          }),
           const Spacer(),
           const Divider(),
           _buildDrawerItem(

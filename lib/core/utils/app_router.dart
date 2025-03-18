@@ -7,7 +7,10 @@ import 'package:smart_home/features/home/presentation/view/entertainment_view.da
 import 'package:smart_home/features/home/presentation/view/home_view.dart';
 import 'package:smart_home/features/home/presentation/view/lighting_view.dart';
 import 'package:smart_home/features/home/presentation/view/security_view.dart';
+import 'package:smart_home/features/home/presentation/view/settings_view.dart';
+import 'package:smart_home/features/home/presentation/view/temperature.dart';
 import 'package:smart_home/features/home/presentation/view/water_view.dart';
+import 'package:smart_home/features/home/presentation/view/wifi_settings_view.dart';
 import 'package:smart_home/features/splash/presentation/view/splash_view.dart';
 
 abstract class AppRouter {
@@ -25,6 +28,9 @@ abstract class AppRouter {
   static const kDashboardView = '/dashboardView';
   static const kSecurityView = '/securityView';
   static const kLightingView = '/lightingView';
+  static const kWifiSettingsView = '/wifiSettingsView';
+  static const kTempratureView = '/tempratureView';
+  static const kSettingsView = '/settingsView';
 
   static final router = GoRouter(
     routes: [
@@ -53,6 +59,15 @@ abstract class AppRouter {
       ),
       GoRoute(path: kSecurityView, builder: (context, state) => SecurityView()),
       GoRoute(path: kLightingView, builder: (context, state) => LightingView()),
+      GoRoute(
+        path: kWifiSettingsView,
+        builder: (context, state) => WifiSettingsView(),
+      ),
+      GoRoute(
+        path: kTempratureView,
+        builder: (context, state) => TemperaturePage(),
+      ),
+      GoRoute(path: kSettingsView, builder: (context, state) => SettingsView()),
     ],
   );
 }
