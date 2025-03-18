@@ -14,101 +14,97 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 🔙 Back & Title
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  'Dashboard',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // 🌤️ Weather Widget
+          _buildWeatherWidget(),
+
+          const SizedBox(height: 20),
+
+          // 🎛️ Smart Controls
+          GridView.count(
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            childAspectRatio: 1.1,
+            physics: const NeverScrollableScrollPhysics(),
             children: [
-              // 🔙 Back & Title
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  const Text(
-                    'Dashboard',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+              _buildDashboardCard(
+                icon: Icons.thermostat,
+                title: 'Temperature',
+                subtitle: '${climateControlTemp.toInt()}°C',
+                color: Colors.orangeAccent,
               ),
-              const SizedBox(height: 20),
-
-              // 🌤️ Weather Widget
-              _buildWeatherWidget(),
-
-              const SizedBox(height: 20),
-
-              // 🎛️ Smart Controls
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 1.1,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  _buildDashboardCard(
-                    icon: Icons.thermostat,
-                    title: 'Temperature',
-                    subtitle: '22°C',
-                    color: Colors.orangeAccent,
-                  ),
-                  _buildDashboardCard(
-                    icon: Icons.lightbulb,
-                    title: 'Lighting',
-                    subtitle: '5 Active',
-                    color: Colors.yellowAccent.shade700,
-                  ),
-                  _buildDashboardCard(
-                    icon: Icons.lock,
-                    title: 'Security',
-                    subtitle: 'Armed',
-                    color: Colors.redAccent,
-                  ),
-                  _buildDashboardCard(
-                    icon: Icons.wifi,
-                    title: 'Wi-Fi',
-                    subtitle: 'Connected',
-                    color: Colors.blueAccent,
-                  ),
-                ],
+              _buildDashboardCard(
+                icon: Icons.lightbulb,
+                title: 'Lighting',
+                subtitle: '5 Active',
+                color: Colors.yellowAccent.shade700,
               ),
-
-              const SizedBox(height: 20),
-
-              // 🏠 Room Climate Control
-              _buildClimateControl(),
-
-              const SizedBox(height: 20),
-
-              // 📡 Speaker System
-              _buildSpeakerCard(),
-
-              const SizedBox(height: 20),
-
-              // 📊 Energy Usage Graph
-              _buildEnergyUsageGraph(),
-
-              const SizedBox(height: 20),
-
-              // 🔍 Security Camera Preview
-              _buildSecurityCameraPreview(),
+              _buildDashboardCard(
+                icon: Icons.lock,
+                title: 'Security',
+                subtitle: 'Armed',
+                color: Colors.redAccent,
+              ),
+              _buildDashboardCard(
+                icon: Icons.wifi,
+                title: 'Wi-Fi',
+                subtitle: 'Connected',
+                color: Colors.blueAccent,
+              ),
             ],
           ),
-        ),
+
+          const SizedBox(height: 20),
+
+          // 🏠 Room Climate Control
+          _buildClimateControl(),
+
+          const SizedBox(height: 20),
+
+          // 📡 Speaker System
+          _buildSpeakerCard(),
+
+          const SizedBox(height: 20),
+
+          // 📊 Energy Usage Graph
+          _buildEnergyUsageGraph(),
+
+          const SizedBox(height: 20),
+
+          // 🔍 Security Camera Preview
+          _buildSecurityCameraPreview(),
+        ],
       ),
     );
   }
