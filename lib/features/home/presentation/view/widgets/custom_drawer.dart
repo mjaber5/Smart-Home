@@ -18,30 +18,27 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: IColors.kSeconderyColor.withAlpha(45),
             ),
-            accountName: const Text(
-              'Mohammed Jaber',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: IColors.kFourthColor,
+            accountName: Padding(
+              padding: const EdgeInsets.all(.0),
+              child: const Text(
+                'Mohammed Jaber',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            accountEmail: const Text(
-              'mhammdjbr555gmail.com',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: IColors.kFourthColor,
+            accountEmail: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: const Text(
+                'mhammdjbr555gmail.com',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
-            ),
-            currentAccountPicture: const CircleAvatar(
-              backgroundImage: AssetImage('assets/icons/2.png'),
             ),
           ),
           _buildDrawerItem(Icons.dashboard, 'Dashboard', () {
             GoRouter.of(context).push(AppRouter.kDashboardView);
           }),
-          _buildDrawerItem(Icons.lightbulb_outline, 'Lighting', () {}),
+          _buildDrawerItem(Icons.lightbulb_outline, 'Lighting', () {
+            GoRouter.of(context).push(AppRouter.kLightingView);
+          }),
           _buildDrawerItem(Icons.thermostat, 'Temperature', () {}),
           _buildDrawerItem(Icons.security, 'Security', () {
             GoRouter.of(context).push(AppRouter.kSecurityView);
