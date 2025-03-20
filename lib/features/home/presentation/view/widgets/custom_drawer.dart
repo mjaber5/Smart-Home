@@ -18,19 +18,13 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: IColors.kSeconderyColor.withAlpha(45),
             ),
-            accountName: Padding(
-              padding: const EdgeInsets.all(.0),
-              child: const Text(
-                'Mohammed Jaber',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
+            accountName: Text(
+              'Mohammed Jaber',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
-            accountEmail: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: const Text(
-                'mhammdjbr555gmail.com',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-              ),
+            accountEmail: Text(
+              'mhammdjbr555@gmail.com',
+              style: TextStyle(fontSize: 16),
             ),
           ),
           _buildDrawerItem(Icons.dashboard, 'Dashboard', () {

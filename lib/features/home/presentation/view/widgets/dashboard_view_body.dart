@@ -38,12 +38,6 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
               ],
             ),
           ),
-          const SizedBox(height: 20),
-
-          // 🌤️ Weather Widget
-          _buildWeatherWidget(),
-
-          const SizedBox(height: 20),
 
           // 🎛️ Smart Controls
           GridView.count(
@@ -100,42 +94,6 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
 
           // 🔍 Security Camera Preview
           _buildSecurityCameraPreview(),
-        ],
-      ),
-    );
-  }
-
-  /// 🌤️ **Weather Widget**
-  Widget _buildWeatherWidget() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: IColors.kSeconderyColor.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Current Weather',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Sunny, 25°C',
-                style: TextStyle(fontSize: 16, color: Colors.white70),
-              ),
-            ],
-          ),
-          Image.asset('assets/icons/3.png', width: 100),
-          // Icon(Icons.wb_sunny, size: 40, color: Colors.yellowAccent),
         ],
       ),
     );

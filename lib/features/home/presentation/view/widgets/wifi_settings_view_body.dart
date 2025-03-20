@@ -151,7 +151,7 @@ class _WifiSettingsViewBodyState extends State<WifiSettingsViewBody> {
               ),
               subtitle: Text(
                 "Signal Strength: ${network['strength']}",
-                style: const TextStyle(color: Colors.grey, fontSize: 12),
+                style: const TextStyle(fontSize: 12),
               ),
               trailing: Icon(
                 Icons.lock,

@@ -103,30 +103,33 @@ class _WeatherContainerState extends State<WeatherContainer> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${weather.temperature.toStringAsFixed(0)}°C",
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: IColors.kPrimaryColor,
+          SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${weather.temperature.toStringAsFixed(0)}°C",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color: IColors.kPrimaryColor,
+                  ),
                 ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                weather.description,
-                overflow: TextOverflow.fade,
-                style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
-              ),
-              SizedBox(height: 8),
-              Text(
-                weather.city,
-                style: TextStyle(fontSize: 16, color: Colors.grey.shade500),
-              ),
-            ],
+                SizedBox(height: 8),
+                Text(
+                  weather.description,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  weather.city,
+                  style: TextStyle(fontSize: 16, color: Colors.grey.shade500),
+                ),
+              ],
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
