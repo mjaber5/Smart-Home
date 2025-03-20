@@ -1,26 +1,20 @@
-# Smart Home Control App
-The Smart Home Control App is a modern, user-friendly mobile application built with Flutter. It enables users to seamlessly control and monitor various smart home devices, ensuring convenience, security, and energy efficiency.
+# 🏡 Digital Home - Smart Home Control App  
 
-🌟Key Features
-📡 WiFi Settings – Manage and connect to available networks with ease.
+**Digital Home** is a **Flutter-based** smart home control application designed to provide seamless management of IoT-enabled home devices. The app integrates **real-time control and monitoring** of lighting, security, climate, and WiFi settings through a sleek and intuitive user interface.  
 
-💡 Lighting Control – Adjust brightness, switch lights on/off, and activate smart scenes like Relax, Work, Party.
+## 🌟 Features
+- **📶 WiFi Settings** – Manage and configure your home’s WiFi network for IoT devices.  
+- **💡 Smart Lighting** – Adjust brightness, toggle room lights, and switch between custom lighting modes like Relax, Work, and Party.  
+- **🔐 Security System** – Monitor doors, windows, and security cameras, and receive instant alerts.  
+- **🌡️ Climate Control** – Adjust temperature and fan settings for a comfortable home environment.  
+- **⛅ Weather Integration** – Get live weather updates for your location to optimize home automation.  
+- **📲 Remote Access** – Control and automate devices from anywhere.  
 
-🔒 Security Management – Monitor security cameras, door locks, and alarm systems for enhanced safety.
+## 🛠️ Technology Stack
+- **Frontend**: Flutter (Dart)  
+- **Backend**: Firebase (for authentication and real-time database)  
+- **IoT Simulation**: Wokwi (Simulated Raspberry Pi)  
+- **State Management**: Provider  
+- **API Integration**: OpenWeatherMap API for live weather updates  
 
-🌤️ Weather Updates – Get real-time weather information based on your location.
-
-📊 Dashboard Overview – A centralized interface displaying key smart home metrics.
-
-🔌 Device Control – Manage smart plugs, thermostats, and other IoT appliances.
-
-🔧 Tech Stack
-Frontend: Flutter (Dart)
-
-State Management: Provider / Riverpod (as needed)
-
-Backend: Firebase / IoT Integration
-
-Networking: HTTP / MQTT Protocols
-
-This project aims to create an efficient and interactive smart home experience through an intuitive mobile interface. 🚀
+This app is designed to enhance convenience, efficiency, and security within a smart home environment, offering **seamless interaction** between users and their IoT devices. 🚀  
