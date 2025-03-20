@@ -118,7 +118,8 @@ class _WeatherContainerState extends State<WeatherContainer> {
               SizedBox(height: 8),
               Text(
                 weather.description,
-                style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
+                overflow: TextOverflow.fade,
+                style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
               ),
               SizedBox(height: 8),
               Text(

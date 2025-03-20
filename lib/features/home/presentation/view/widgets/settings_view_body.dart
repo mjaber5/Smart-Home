@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
-class SettingsViewBody extends StatelessWidget {
+class SettingsViewBody extends StatefulWidget {
   const SettingsViewBody({super.key});
+
+  @override
+  State<SettingsViewBody> createState() => _SettingsViewBodyState();
+}
+
+class _SettingsViewBodyState extends State<SettingsViewBody> {
+  bool isWifiOn = true;
+  bool isBlootoothOn = true;
+  bool isSecurityOn = true;
+  bool isEmergencAlertOn = true;
+  bool isEnergyConsumptionOn = true;
+  bool isSmartModeOn = true;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +71,6 @@ class SettingsViewBody extends StatelessWidget {
   Widget _buildControlPanel() {
     return Card(
       color: Colors.blueAccent.withOpacity(0.1),
-
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -132,9 +143,19 @@ class SettingsViewBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildNetworkItem("Wi-Fi Network", Icons.wifi),
+            _buildNetworkItem("Wi-Fi Network", Icons.wifi, isWifiOn, (value) {
+              setState(() {
+                isWifiOn = value;
+              });
+            }),
             const SizedBox(height: 16),
-            _buildNetworkItem("Bluetooth", Icons.bluetooth),
+            _buildNetworkItem("Bluetooth", Icons.bluetooth, isBlootoothOn, (
+              value,
+            ) {
+              setState(() {
+                isBlootoothOn = value;
+              });
+            }),
           ],
         ),
       ),
@@ -142,7 +163,12 @@ class SettingsViewBody extends StatelessWidget {
   }
 
   // Network Item (Wi-Fi, Bluetooth, etc.)
-  Widget _buildNetworkItem(String title, IconData icon) {
+  Widget _buildNetworkItem(
+    String title,
+    IconData icon,
+    bool valueExternal,
+    ValueChanged<bool> onChanged,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -157,10 +183,8 @@ class SettingsViewBody extends StatelessWidget {
           ],
         ),
         Switch(
-          value: true, // Replace with actual network status
-          onChanged: (value) {
-            // Handle network toggle
-          },
+          value: valueExternal, // Replace with actual network status
+          onChanged: onChanged,
           activeColor: Colors.blueAccent,
         ),
       ],
@@ -176,9 +200,24 @@ class SettingsViewBody extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildSecurityItem("Home Security", Icons.security),
+            _buildSecurityItem("Home Security", Icons.security, isSecurityOn, (
+              value,
+            ) {
+              setState(() {
+                isSecurityOn = value;
+              });
+            }),
             const SizedBox(height: 16),
-            _buildSecurityItem("Emergency Alerts", Icons.notifications_active),
+            _buildSecurityItem(
+              "Emergency Alerts",
+              Icons.notifications_active,
+              isEmergencAlertOn,
+              (value) {
+                setState(() {
+                  isEmergencAlertOn = value;
+                });
+              },
+            ),
           ],
         ),
       ),
@@ -186,7 +225,12 @@ class SettingsViewBody extends StatelessWidget {
   }
 
   // Security Item (Security systems, Alerts)
-  Widget _buildSecurityItem(String title, IconData icon) {
+  Widget _buildSecurityItem(
+    String title,
+    IconData icon,
+    bool valueExternal,
+    ValueChanged<bool> onChanged,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -201,10 +245,8 @@ class SettingsViewBody extends StatelessWidget {
           ],
         ),
         Switch(
-          value: true, // Replace with actual security status
-          onChanged: (value) {
-            // Handle security toggle
-          },
+          value: valueExternal, // Replace with actual security status
+          onChanged: onChanged,
           activeColor: Colors.redAccent,
         ),
       ],
@@ -221,9 +263,24 @@ class SettingsViewBody extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildEnergyItem("Energy Consumption", Icons.battery_charging_full),
+            _buildEnergyItem(
+              "Energy Consumption",
+              Icons.battery_charging_full,
+              isEnergyConsumptionOn,
+              (value) {
+                setState(() {
+                  isEnergyConsumptionOn = value;
+                });
+              },
+            ),
             const SizedBox(height: 16),
-            _buildEnergyItem("Smart Mode", Icons.flash_on),
+            _buildEnergyItem("Smart Mode", Icons.flash_on, isSmartModeOn, (
+              value,
+            ) {
+              setState(() {
+                isSmartModeOn = value;
+              });
+            }),
           ],
         ),
       ),
@@ -231,7 +288,12 @@ class SettingsViewBody extends StatelessWidget {
   }
 
   // Energy Item (Energy consumption, Smart Mode)
-  Widget _buildEnergyItem(String title, IconData icon) {
+  Widget _buildEnergyItem(
+    String title,
+    IconData icon,
+    bool valueExternal,
+    ValueChanged<bool> onChanged,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -246,10 +308,8 @@ class SettingsViewBody extends StatelessWidget {
           ],
         ),
         Switch(
-          value: true, // Replace with actual energy status
-          onChanged: (value) {
-            // Handle energy toggle
-          },
+          value: valueExternal, // Replace with actual energy status
+          onChanged: onChanged,
           activeColor: Colors.yellowAccent,
         ),
       ],

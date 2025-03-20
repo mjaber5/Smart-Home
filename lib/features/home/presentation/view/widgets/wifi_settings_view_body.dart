@@ -45,7 +45,6 @@ class _WifiSettingsViewBodyState extends State<WifiSettingsViewBody> {
             const SizedBox(height: 24),
             if (isWifiOn) _buildAvailableNetworksList(),
             const SizedBox(height: 20),
-            _buildSmartHomeControlPanel(),
           ],
         ),
       ),
@@ -168,86 +167,6 @@ class _WifiSettingsViewBodyState extends State<WifiSettingsViewBody> {
           );
         },
       ),
-    );
-  }
-
-  Widget _buildSmartHomeControlPanel() {
-    return Card(
-      color: IColors.kPrimaryColor.withOpacity(0.1),
-
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Smart Home Devices",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildDeviceControl(
-                  "Living Room Lights",
-                  Icons.lightbulb,
-                  Colors.yellowAccent,
-                ),
-                _buildDeviceControl(
-                  "Thermostat",
-                  Icons.thermostat_outlined,
-                  Colors.orangeAccent,
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildDeviceControl(
-                  "Front Door Lock",
-                  Icons.lock,
-                  Colors.greenAccent,
-                ),
-                _buildDeviceControl(
-                  "Security Camera",
-                  Icons.security,
-                  Colors.redAccent,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDeviceControl(
-    String deviceName,
-    IconData icon,
-    Color iconColor,
-  ) {
-    return Column(
-      children: [
-        IconButton(
-          icon: Icon(icon, color: iconColor, size: 36),
-          onPressed: () {
-            // Handle control action
-          },
-        ),
-        Text(
-          deviceName,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
     );
   }
 

@@ -52,14 +52,6 @@ class CustomDrawer extends StatelessWidget {
             GoRouter.of(context).push(AppRouter.kSettingsView);
           }),
           const Spacer(),
-          const Divider(),
-          _buildDrawerItem(
-            Icons.logout,
-            'Logout',
-            () {},
-            isLogout: true,
-            color: Colors.red,
-          ),
         ],
       ),
     );
