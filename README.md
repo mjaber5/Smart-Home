@@ -1,16 +1,18 @@
-# smart_home
+# Smart Home Control App
+The Smart Home Control App is a modern, user-friendly mobile application built with Flutter. It enables users to seamlessly control and monitor various smart home devices, ensuring convenience, security, and energy efficiency.
 
-Smart home application with iot
+🌟Key Features
+📡 WiFi Settings – Manage and connect to available networks with ease.
+💡 Lighting Control – Adjust brightness, switch lights on/off, and activate smart scenes like Relax, Work, Party.
+🔒 Security Management – Monitor security cameras, door locks, and alarm systems for enhanced safety.
+🌤️ Weather Updates – Get real-time weather information based on your location.
+📊 Dashboard Overview – A centralized interface displaying key smart home metrics.
+🔌 Device Control – Manage smart plugs, thermostats, and other IoT appliances.
+🔧 Tech Stack
+Frontend: Flutter (Dart)
+State Management: Provider / Riverpod (as needed)
+Backend: Firebase / IoT Integration
+Networking: HTTP / MQTT Protocols
+This project aims to create an efficient and interactive smart home experience through an intuitive mobile interface. 🚀
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Let me know if you want modifications!
